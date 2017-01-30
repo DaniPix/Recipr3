@@ -3,6 +3,7 @@ package com.dani2pix.recipr;
 
 import com.dani2pix.recipr.api.AuthApiConstants;
 import com.dani2pix.recipr.api.AuthApiService;
+import com.dani2pix.recipr.api.NetworkService;
 import com.dani2pix.recipr.api.NetworkServiceImpl;
 import com.dani2pix.recipr.authentication.presenter.AuthPresenter;
 import com.dani2pix.recipr.authentication.presenter.AuthPresenterImpl;
@@ -42,13 +43,13 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public NetworkServiceImpl providesNetworkService(AuthApiService networkService) {
+    public NetworkService providesNetworkService(AuthApiService networkService) {
         return new NetworkServiceImpl(networkService);
     }
 
     @Provides
     @Singleton
-    public AuthPresenter provideAuthPresenter(NetworkServiceImpl networkService) {
+    public AuthPresenter provideAuthPresenter(NetworkService networkService) {
         return new AuthPresenterImpl(networkService);
     }
 

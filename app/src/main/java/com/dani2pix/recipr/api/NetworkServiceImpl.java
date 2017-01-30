@@ -6,10 +6,8 @@ import com.dani2pix.recipr.authentication.model.RequestTokenModel;
 
 import javax.inject.Inject;
 
-import retrofit2.Retrofit;
 import rx.Observable;
 import rx.Observer;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -17,8 +15,7 @@ import rx.schedulers.Schedulers;
  * Created by Domnica on 1/30/2017.
  */
 
-public class NetworkServiceImpl {
-
+public class NetworkServiceImpl implements NetworkService {
 
     private AuthApiService networkService;
 
@@ -27,9 +24,10 @@ public class NetworkServiceImpl {
         this.networkService = networkService;
     }
 
-    public Subscription fetchRequestToken(final RequestTokenCallback callback) {
+    @Override
+    public void fetchRequestToken(final AuthCallback callback) {
         Observable<RequestTokenModel> observable = networkService.requestToken(AuthApiConstants.API_KEY);
-        return observable.observeOn(AndroidSchedulers.mainThread())
+        observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<RequestTokenModel>() {
                     @Override
@@ -45,17 +43,8 @@ public class NetworkServiceImpl {
 
                     @Override
                     public void onNext(RequestTokenModel requestTokenModel) {
-                        callback.onTokenReceived(requestTokenModel);
+                        // Don't do anything with it yet
                     }
                 });
-    }
-
-
-    public interface RequestTokenCallback {
-        void onTokenReceived(RequestTokenModel requestToken);
-
-        void onSuccess();
-
-        void onError();
     }
 }

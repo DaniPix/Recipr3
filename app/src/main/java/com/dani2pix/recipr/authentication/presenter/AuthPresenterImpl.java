@@ -1,8 +1,6 @@
 package com.dani2pix.recipr.authentication.presenter;
 
-
-import com.dani2pix.recipr.api.NetworkServiceImpl;
-import com.dani2pix.recipr.authentication.model.RequestTokenModel;
+import com.dani2pix.recipr.api.NetworkService;
 import com.dani2pix.recipr.authentication.view.AuthView;
 
 import java.lang.ref.WeakReference;
@@ -17,23 +15,16 @@ import javax.inject.Inject;
 public class AuthPresenterImpl implements AuthPresenter {
 
     private WeakReference<AuthView> view;
-
-
-    NetworkServiceImpl networkService;
+    private NetworkService networkService;
 
     @Inject
-    public AuthPresenterImpl(NetworkServiceImpl networkService){
+    public AuthPresenterImpl(NetworkService networkService) {
         this.networkService = networkService;
     }
 
     @Override
     public void beginAuthenticationProcess() {
-        networkService.fetchRequestToken(new NetworkServiceImpl.RequestTokenCallback() {
-            @Override
-            public void onTokenReceived(RequestTokenModel requestToken) {
-               // dont care
-            }
-
+        networkService.fetchRequestToken(new NetworkService.AuthCallback() {
             @Override
             public void onSuccess() {
                 view.get().onAuthenticationSuccess();
@@ -49,7 +40,6 @@ public class AuthPresenterImpl implements AuthPresenter {
     @Override
     public void attachView(AuthView view) {
         this.view = new WeakReference<>(view);
-
     }
 
     @Override
