@@ -8,5 +8,5 @@ import com.dani2pix.recipr.presenter.Presenter;
  */
 
 public interface AuthPresenter extends Presenter<AuthView> {
-    void beingAuthenticationProcess();
+    void beginAuthenticationProcess();
 }

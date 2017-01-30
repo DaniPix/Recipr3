@@ -1,5 +1,7 @@
 package com.dani2pix.recipr.presenter;
 
+import android.content.Context;
+
 /**
  * Created by Domnica on 1/28/2017.
  */

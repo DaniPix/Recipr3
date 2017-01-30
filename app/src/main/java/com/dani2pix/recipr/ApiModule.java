@@ -24,7 +24,7 @@ public class ApiModule {
     @Singleton
     Retrofit provideRetrofit() {
         return new Retrofit.Builder()
-                .baseUrl(AuthApiConstants.BASE_ENDPOINT + "/" + AuthApiConstants.API_KEY + "/")
+                .baseUrl(AuthApiConstants.BASE_ENDPOINT)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();

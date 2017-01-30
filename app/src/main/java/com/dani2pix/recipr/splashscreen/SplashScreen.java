@@ -1,6 +1,8 @@
 package com.dani2pix.recipr.splashscreen;
 
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.dani2pix.recipr.R;
 import com.dani2pix.recipr.ReciprApplication;
+import com.dani2pix.recipr.authentication.view.AuthFragment;
 
 import javax.inject.Inject;
 
@@ -21,29 +24,15 @@ import retrofit2.Retrofit;
 
 public class SplashScreen extends AppCompatActivity {
 
-
-    @Inject
-    SharedPreferences prefs;
-    @Inject
-    Context context;
-    @Inject
-    Retrofit retrofit;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-        ((ReciprApplication)getApplication()).getComponent().inject(this);
-
-        if(retrofit != null){
-            Toast.makeText(context, "YEP", Toast.LENGTH_SHORT).show();
-        }
-
         setContentView(R.layout.activity_splash_screen);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        startAuthFragment();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -55,4 +44,15 @@ public class SplashScreen extends AppCompatActivity {
         });
     }
 
+
+    private void startAuthFragment() {
+        FragmentManager fragmentManager = getFragmentManager();
+        if (fragmentManager.findFragmentByTag(AuthFragment.class.getSimpleName()) == null) {
+            Fragment authFragment = new AuthFragment();
+            fragmentManager.beginTransaction().
+                    replace(R.id.content_splash_screen, authFragment, AuthFragment.class.getSimpleName())
+                    .commit();
+        }
+
+    }
 }
