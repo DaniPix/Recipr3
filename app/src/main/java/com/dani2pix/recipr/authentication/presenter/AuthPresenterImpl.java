@@ -1,12 +1,7 @@
 package com.dani2pix.recipr.authentication.presenter;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 
-import com.dani2pix.recipr.ReciprApplication;
-import com.dani2pix.recipr.api.AuthApiConstants;
-import com.dani2pix.recipr.api.AuthApiService;
+import com.dani2pix.recipr.api.NetworkServiceImpl;
 import com.dani2pix.recipr.authentication.model.RequestTokenModel;
 import com.dani2pix.recipr.authentication.view.AuthView;
 
@@ -14,13 +9,6 @@ import java.lang.ref.WeakReference;
 
 import javax.inject.Inject;
 
-import retrofit2.Retrofit;
-import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Domnica on 1/30/2017.
@@ -29,39 +17,33 @@ import rx.schedulers.Schedulers;
 public class AuthPresenterImpl implements AuthPresenter {
 
     private WeakReference<AuthView> view;
-    private Subscription subscription;
 
-    private RequestTokenModel requestToken;
 
-    private Retrofit retrofit;
+    NetworkServiceImpl networkService;
 
     @Inject
-    public AuthPresenterImpl(Retrofit retrofit){
-        this.retrofit = retrofit;
+    public AuthPresenterImpl(NetworkServiceImpl networkService){
+        this.networkService = networkService;
     }
 
     @Override
     public void beginAuthenticationProcess() {
-        Observable<RequestTokenModel> observable = retrofit.create(AuthApiService.class).requestToken(AuthApiConstants.API_KEY);
-        subscription = observable.observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<RequestTokenModel>() {
-                    @Override
-                    public void onCompleted() {
-                        view.get().onAuthenticationSuccess();
-                    }
+        networkService.fetchRequestToken(new NetworkServiceImpl.RequestTokenCallback() {
+            @Override
+            public void onTokenReceived(RequestTokenModel requestToken) {
+               // dont care
+            }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e(getClass().getName(), e.getMessage(), e);
-                        view.get().onAuthenticationFailure();
-                    }
+            @Override
+            public void onSuccess() {
+                view.get().onAuthenticationSuccess();
+            }
 
-                    @Override
-                    public void onNext(RequestTokenModel requestTokenModel) {
-                        requestToken = requestTokenModel;
-                    }
-                });
+            @Override
+            public void onError() {
+                view.get().onAuthenticationFailure();
+            }
+        });
     }
 
     @Override
@@ -73,8 +55,5 @@ public class AuthPresenterImpl implements AuthPresenter {
     @Override
     public void detachView() {
         this.view = null;
-        if (subscription != null && !subscription.isUnsubscribed()) {
-            subscription.unsubscribe();
-        }
     }
 }

@@ -39,10 +39,4 @@ public class ApplicationModule {
     public SharedPreferences provideSharedPreferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
-
-    @Provides
-    @Singleton
-    public AuthPresenter provideAuthPresenter(Retrofit retrofit) {
-        return new AuthPresenterImpl(retrofit);
-    }
 }

@@ -1,9 +1,11 @@
 package com.dani2pix.recipr;
 
-import android.content.Context;
 
 import com.dani2pix.recipr.api.AuthApiConstants;
 import com.dani2pix.recipr.api.AuthApiService;
+import com.dani2pix.recipr.api.NetworkServiceImpl;
+import com.dani2pix.recipr.authentication.presenter.AuthPresenter;
+import com.dani2pix.recipr.authentication.presenter.AuthPresenterImpl;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -29,4 +31,25 @@ public class ApiModule {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
     }
+
+
+    @Provides
+    @Singleton
+    public AuthApiService provideAuthApiService(Retrofit retrofit) {
+        return retrofit.create(AuthApiService.class);
+    }
+
+
+    @Provides
+    @Singleton
+    public NetworkServiceImpl providesNetworkService(AuthApiService networkService) {
+        return new NetworkServiceImpl(networkService);
+    }
+
+    @Provides
+    @Singleton
+    public AuthPresenter provideAuthPresenter(NetworkServiceImpl networkService) {
+        return new AuthPresenterImpl(networkService);
+    }
+
 }
