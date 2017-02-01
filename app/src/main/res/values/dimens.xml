@@ -3,4 +3,11 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+
+    <!-- Authentication Module -->
+    <dimen name="authentication_button_width">120dp</dimen>
+    <dimen name="authentication_button_height">30dp</dimen>
+    <dimen name="authentication_padding">50dp</dimen>
+
 </resources>

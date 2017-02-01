@@ -2,7 +2,7 @@ package com.dani2pix.recipr.api;
 
 import android.util.Log;
 
-import com.dani2pix.recipr.authentication.model.RequestTokenModel;
+import com.dani2pix.recipr.authentication.model.RequestToken;
 
 import javax.inject.Inject;
 
@@ -26,10 +26,10 @@ public class NetworkServiceImpl implements NetworkService {
 
     @Override
     public void fetchRequestToken(final AuthCallback callback) {
-        Observable<RequestTokenModel> observable = networkService.requestToken(AuthApiConstants.API_KEY);
+        Observable<RequestToken> observable = networkService.requestToken(AuthApiConstants.API_KEY);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<RequestTokenModel>() {
+                .subscribe(new Observer<RequestToken>() {
                     @Override
                     public void onCompleted() {
                         callback.onSuccess();
@@ -42,7 +42,7 @@ public class NetworkServiceImpl implements NetworkService {
                     }
 
                     @Override
-                    public void onNext(RequestTokenModel requestTokenModel) {
+                    public void onNext(RequestToken requestTokenModel) {
                         // Don't do anything with it yet
                     }
                 });

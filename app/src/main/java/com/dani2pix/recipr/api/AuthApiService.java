@@ -1,10 +1,9 @@
 package com.dani2pix.recipr.api;
 
 
-import com.dani2pix.recipr.authentication.model.RequestTokenModel;
+import com.dani2pix.recipr.authentication.model.RequestToken;
 
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -14,5 +13,8 @@ import rx.Observable;
 
 public interface AuthApiService {
     @GET(AuthApiConstants.CREATE_REQUEST_TOKEN)
-    Observable<RequestTokenModel> requestToken(@Query(AuthApiConstants.QUERY_API_KEY) String apiKey);
+    Observable<RequestToken> requestToken(@Query(AuthApiConstants.QUERY_API_KEY) String apiKey);
+
+
+
 }

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Domnica on 1/28/2017.
  */
 
-public class GuestSessionModel {
+public class GuestSession {
 
     @SerializedName("success")
     private boolean success;
