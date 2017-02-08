@@ -8,6 +8,10 @@ import com.dani2pix.recipr.view.View;
 
 public interface AuthView extends View {
 
+    void onTokenRequestSuccess(String token);
+
+    void onTokenRequestFailure();
+
     void onAuthenticationSuccess();
 
     void onAuthenticationFailure();

@@ -1,11 +1,19 @@
 package com.dani2pix.recipr.authentication.presenter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+
+import com.dani2pix.recipr.api.AuthApiConstants;
 import com.dani2pix.recipr.api.NetworkService;
 import com.dani2pix.recipr.authentication.view.AuthView;
 
 import java.lang.ref.WeakReference;
 
 import javax.inject.Inject;
+
+import static com.dani2pix.recipr.api.AuthApiConstants.API_KEY;
+import static com.dani2pix.recipr.api.AuthApiConstants.CREATE_SESSION;
 
 
 /**
@@ -18,13 +26,37 @@ public class AuthPresenterImpl implements AuthPresenter {
     private NetworkService networkService;
 
     @Inject
+    Context context;
+
+    @Inject
     public AuthPresenterImpl(NetworkService networkService) {
         this.networkService = networkService;
     }
 
     @Override
-    public void beginAuthenticationProcess() {
+    public void fetchToken() {
         networkService.fetchRequestToken(new NetworkService.AuthCallback() {
+            @Override
+            public void onSuccess() {
+                //view.get().onTokenRequestSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.get().onTokenRequestFailure();
+            }
+        }, new NetworkService.AuthCallback.TokenCallback() {
+            @Override
+            public void onTokenRetrieved(String token) {
+               // view.get().onTokenRequestSuccess(token);
+                fetchSession(token);
+            }
+        });
+    }
+
+    @Override
+    public void fetchSession(String token) {
+        networkService.fetchSession(new NetworkService.AuthCallback() {
             @Override
             public void onSuccess() {
                 view.get().onAuthenticationSuccess();
@@ -32,9 +64,9 @@ public class AuthPresenterImpl implements AuthPresenter {
 
             @Override
             public void onError() {
-                view.get().onAuthenticationFailure();
+                view.get().onAuthenticationSuccess();
             }
-        });
+        }, token);
     }
 
     @Override

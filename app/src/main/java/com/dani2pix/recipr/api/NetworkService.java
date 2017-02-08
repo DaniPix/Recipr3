@@ -6,11 +6,17 @@ package com.dani2pix.recipr.api;
 
 public interface NetworkService {
 
-    void fetchRequestToken(AuthCallback callback);
+    void fetchRequestToken(AuthCallback authCallback, AuthCallback.TokenCallback tokenCallback);
+
+    void fetchSession(AuthCallback callback, String requestToken);
 
     interface AuthCallback {
         void onSuccess();
 
         void onError();
+
+        interface TokenCallback {
+            void onTokenRetrieved(String token);
+        }
     }
 }
