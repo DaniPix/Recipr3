@@ -3,7 +3,9 @@
     <string name="title_activity_splash_screen">SplashScreen</string>
 
     <!-- Authentication Module -->
-    <string name="authenticate_with_account">Login</string>
-    <string name="authenticate_with_token">MovieDB Login</string>
+    <string name="login">login</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
 
+    <string name="image_placeholder">Image Placeholder</string>
 </resources>

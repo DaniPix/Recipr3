@@ -9,6 +9,10 @@ import com.dani2pix.recipr.presenter.Presenter;
 
 public interface AuthPresenter extends Presenter<AuthView> {
     void fetchToken();
-    void fetchSession(String token);
-    
+
+    void validateToken(String username, String password, String token);
+
+    void fetchSession(String validatedToken);
+
+    void fetchGuestSession();
 }

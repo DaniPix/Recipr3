@@ -1,19 +1,11 @@
 package com.dani2pix.recipr.authentication.presenter;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-
-import com.dani2pix.recipr.api.AuthApiConstants;
-import com.dani2pix.recipr.api.NetworkService;
+import com.dani2pix.recipr.api.http.AuthService;
 import com.dani2pix.recipr.authentication.view.AuthView;
 
 import java.lang.ref.WeakReference;
 
 import javax.inject.Inject;
-
-import static com.dani2pix.recipr.api.AuthApiConstants.API_KEY;
-import static com.dani2pix.recipr.api.AuthApiConstants.CREATE_SESSION;
 
 
 /**
@@ -23,50 +15,11 @@ import static com.dani2pix.recipr.api.AuthApiConstants.CREATE_SESSION;
 public class AuthPresenterImpl implements AuthPresenter {
 
     private WeakReference<AuthView> view;
-    private NetworkService networkService;
+    private AuthService authService;
 
     @Inject
-    Context context;
-
-    @Inject
-    public AuthPresenterImpl(NetworkService networkService) {
-        this.networkService = networkService;
-    }
-
-    @Override
-    public void fetchToken() {
-        networkService.fetchRequestToken(new NetworkService.AuthCallback() {
-            @Override
-            public void onSuccess() {
-                //view.get().onTokenRequestSuccess();
-            }
-
-            @Override
-            public void onError() {
-                view.get().onTokenRequestFailure();
-            }
-        }, new NetworkService.AuthCallback.TokenCallback() {
-            @Override
-            public void onTokenRetrieved(String token) {
-               // view.get().onTokenRequestSuccess(token);
-                fetchSession(token);
-            }
-        });
-    }
-
-    @Override
-    public void fetchSession(String token) {
-        networkService.fetchSession(new NetworkService.AuthCallback() {
-            @Override
-            public void onSuccess() {
-                view.get().onAuthenticationSuccess();
-            }
-
-            @Override
-            public void onError() {
-                view.get().onAuthenticationSuccess();
-            }
-        }, token);
+    public AuthPresenterImpl(AuthService authService) {
+        this.authService = authService;
     }
 
     @Override
@@ -77,5 +30,68 @@ public class AuthPresenterImpl implements AuthPresenter {
     @Override
     public void detachView() {
         this.view = null;
+    }
+
+    @Override
+    public void fetchToken() {
+        authService.fetchToken(new AuthService.AuthCallback() {
+            @Override
+            public void onTokenReceived(String token) {
+                view.get().onTokenReceived(token);
+            }
+
+            @Override
+            public void onError() {
+                view.get().onAuthenticationFailure();
+            }
+        });
+    }
+
+    @Override
+    public void validateToken(String username, String password, String token) {
+        authService.validateToken(new AuthService.AuthCallback() {
+            @Override
+            public void onTokenValidated(String validatedToken) {
+                view.get().onTokenValidated(validatedToken);
+            }
+
+            @Override
+            public void onError() {
+                view.get().onAuthenticationFailure();
+            }
+
+        }, username, password, token);
+    }
+
+    @Override
+    public void fetchSession(String validatedToken) {
+        authService.fetchSession(new AuthService.AuthCallback() {
+            @Override
+            public void onSessionReceived(String session) {
+                view.get().onSessionReceived(session);
+            }
+
+            @Override
+            public void onError() {
+                view.get().onAuthenticationFailure();
+            }
+
+        }, validatedToken);
+    }
+
+    @Override
+    public void fetchGuestSession() {
+        authService.fetchGuestSession(new AuthService.AuthCallback() {
+            @Override
+            public void onGuestSessionReceived(String guestSession) {
+                view.get().onGuessSessionReceived(guestSession);
+            }
+
+            @Override
+            public void onError() {
+                view.get().onAuthenticationFailure();
+            }
+        });
+
     }
 }

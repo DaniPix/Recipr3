@@ -4,11 +4,11 @@ package com.dani2pix.recipr.api;
  * Created by Domnica on 1/28/2017.
  */
 
-public final class AuthApiConstants {
+public final class ApiConstants {
     // API key
     public static final String API_KEY = "ab704156f81d2af1445dc076bb9c869f";
 
-    // API base endpoint
+    // API endpoint
     public static final String BASE_ENDPOINT = "https://api.themoviedb.org/3/";
 
     //Authentication queries constants
@@ -21,7 +21,7 @@ public final class AuthApiConstants {
     public static final String CREATE_SESSION = "authentication/session/new";
     public static final String CREATE_GUEST_SESSION = "authentication/guest_session/new";
 
-    private AuthApiConstants() {
+    private ApiConstants() {
         // avoid instantiation
     }
 }

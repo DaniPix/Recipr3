@@ -2,10 +2,6 @@ package com.dani2pix.recipr;
 
 import android.app.Application;
 
-import com.dani2pix.recipr.api.AuthApiConstants;
-
-import javax.inject.Inject;
-
 /**
  * Created by Domnica on 1/28/2017.
  */

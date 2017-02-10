@@ -1,14 +1,13 @@
 package com.dani2pix.recipr;
 
 
-import com.dani2pix.recipr.api.AuthApiConstants;
-import com.dani2pix.recipr.api.AuthApiService;
-import com.dani2pix.recipr.api.NetworkService;
-import com.dani2pix.recipr.api.NetworkServiceImpl;
+import com.dani2pix.recipr.api.ApiConstants;
+import com.dani2pix.recipr.api.ApiService;
+import com.dani2pix.recipr.api.http.AuthService;
+import com.dani2pix.recipr.api.http.AuthServiceImpl;
 import com.dani2pix.recipr.authentication.presenter.AuthPresenter;
 import com.dani2pix.recipr.authentication.presenter.AuthPresenterImpl;
 
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -27,7 +26,7 @@ public class ApiModule {
     @Singleton
     Retrofit provideRetrofit() {
         return new Retrofit.Builder()
-                .baseUrl(AuthApiConstants.BASE_ENDPOINT)
+                .baseUrl(ApiConstants.BASE_ENDPOINT)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
@@ -36,21 +35,21 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public AuthApiService provideAuthApiService(Retrofit retrofit) {
-        return retrofit.create(AuthApiService.class);
+    public ApiService provideAuthApiService(Retrofit retrofit) {
+        return retrofit.create(ApiService.class);
     }
 
 
     @Provides
     @Singleton
-    public NetworkService providesNetworkService(AuthApiService networkService) {
-        return new NetworkServiceImpl(networkService);
+    public AuthService providesAuthService(ApiService apiService) {
+        return new AuthServiceImpl(apiService);
     }
 
     @Provides
     @Singleton
-    public AuthPresenter provideAuthPresenter(NetworkService networkService) {
-        return new AuthPresenterImpl(networkService);
+    public AuthPresenter provideAuthPresenter(AuthService authService) {
+        return new AuthPresenterImpl(authService);
     }
 
 }
