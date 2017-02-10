@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Recipr</string>
-    <string name="title_activity_splash_screen">SplashScreen</string>
 
     <!-- Authentication Module -->
     <string name="login">login</string>
