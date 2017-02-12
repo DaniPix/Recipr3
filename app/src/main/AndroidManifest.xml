@@ -25,7 +25,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.dashboard.view.DashActivity"
-            android:label="@string/dashboard"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

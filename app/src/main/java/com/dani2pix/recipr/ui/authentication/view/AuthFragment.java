@@ -91,15 +91,11 @@ public class AuthFragment extends Fragment implements AuthView, View.OnClickList
     public void onSessionReceived(String sessionId) {
         prefs.edit().putString(Constants.SESSION_ID, sessionId).apply();
         Toast.makeText(context, "Authentication successful.", Toast.LENGTH_SHORT).show();
-        //TODO Change this
-        Intent intent = new Intent(context, DashActivity.class);
-        startActivity(intent);
-        getActivity().finish();
     }
 
     @Override
     public void onGuessSessionReceived(String guestSessionId) {
-        prefs.edit().putString(Constants.GUEST_SESSION_Id, guestSessionId).apply();
+        prefs.edit().putString(Constants.GUEST_SESSION_ID, guestSessionId).apply();
     }
 
     @Override

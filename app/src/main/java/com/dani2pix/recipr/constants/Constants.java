@@ -7,7 +7,7 @@ package com.dani2pix.recipr.constants;
 public final class Constants {
 
     public static final String SESSION_ID = "sessionId";
-    public static final String GUEST_SESSION_Id = "guestSessionId";
+    public static final String GUEST_SESSION_ID = "guestSessionId";
 
     private Constants() {
         // private constructor to avoid an accidental instantiation
