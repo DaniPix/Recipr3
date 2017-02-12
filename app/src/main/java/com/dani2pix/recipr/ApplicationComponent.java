@@ -3,7 +3,7 @@ package com.dani2pix.recipr;
 import com.dani2pix.recipr.ui.authentication.presenter.AuthPresenterImpl;
 import com.dani2pix.recipr.ui.authentication.view.AuthActivity;
 import com.dani2pix.recipr.ui.authentication.view.AuthFragment;
-import com.dani2pix.recipr.ui.dashboard.adapter.SectionsPagerAdapter;
+import com.dani2pix.recipr.ui.dashboard.view.DashActivity;
 
 import javax.inject.Singleton;
 
@@ -24,5 +24,5 @@ public interface ApplicationComponent {
 
     void inject(AuthFragment target);
 
-    void inject(SectionsPagerAdapter target);
+    void inject(DashActivity target);
 }

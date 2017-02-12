@@ -21,11 +21,11 @@ import javax.inject.Inject;
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    @Inject
-    Context context;
+    private Context context;
 
-    public SectionsPagerAdapter(FragmentManager fm) {
+    public SectionsPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
+        this.context = context;
     }
 
     @Override

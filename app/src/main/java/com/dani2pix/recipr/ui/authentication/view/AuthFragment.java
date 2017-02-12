@@ -49,6 +49,11 @@ public class AuthFragment extends Fragment implements AuthView, View.OnClickList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((ReciprApplication) getActivity().getApplication()).getComponent().inject(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         presenter.attachView(this);
     }
 
@@ -62,11 +67,10 @@ public class AuthFragment extends Fragment implements AuthView, View.OnClickList
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onPause() {
+        super.onPause();
         presenter.detachView();
     }
-
 
     @Override
     public void onClick(View v) {
