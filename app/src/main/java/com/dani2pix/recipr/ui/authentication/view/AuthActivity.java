@@ -1,4 +1,4 @@
-package com.dani2pix.recipr.authentication.view;
+package com.dani2pix.recipr.ui.authentication.view;
 
 import android.app.Fragment;
 import android.app.FragmentManager;

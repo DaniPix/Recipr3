@@ -1,9 +1,9 @@
 package com.dani2pix.recipr;
 
-import com.dani2pix.recipr.authentication.presenter.AuthPresenterImpl;
-import com.dani2pix.recipr.authentication.view.AuthActivity;
-import com.dani2pix.recipr.authentication.view.AuthFragment;
-import com.dani2pix.recipr.splashscreen.SplashScreen;
+import com.dani2pix.recipr.ui.authentication.presenter.AuthPresenterImpl;
+import com.dani2pix.recipr.ui.authentication.view.AuthActivity;
+import com.dani2pix.recipr.ui.authentication.view.AuthFragment;
+import com.dani2pix.recipr.ui.dashboard.adapter.SectionsPagerAdapter;
 
 import javax.inject.Singleton;
 
@@ -17,7 +17,12 @@ import dagger.Component;
 @Component(modules = {ApplicationModule.class, ApiModule.class})
 public interface ApplicationComponent {
     void inject(ReciprApplication target);
+
     void inject(AuthPresenterImpl target);
+
     void inject(AuthActivity target);
+
     void inject(AuthFragment target);
+
+    void inject(SectionsPagerAdapter target);
 }

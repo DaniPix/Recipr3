@@ -1,6 +1,6 @@
-package com.dani2pix.recipr.authentication.view;
+package com.dani2pix.recipr.ui.authentication.view;
 
-import com.dani2pix.recipr.view.View;
+import com.dani2pix.recipr.ui.view.View;
 
 /**
  * Created by Domnica on 1/28/2017.

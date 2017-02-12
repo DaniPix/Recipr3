@@ -11,5 +11,6 @@
     <dimen name="authentication_button_width">200dp</dimen>
     <dimen name="authentication_button_height">40dp</dimen>
     <dimen name="authentication_padding">50dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
 
 </resources>

@@ -1,7 +1,7 @@
-package com.dani2pix.recipr.authentication.presenter;
+package com.dani2pix.recipr.ui.authentication.presenter;
 
-import com.dani2pix.recipr.authentication.view.AuthView;
-import com.dani2pix.recipr.presenter.Presenter;
+import com.dani2pix.recipr.ui.authentication.view.AuthView;
+import com.dani2pix.recipr.ui.presenter.Presenter;
 
 /**
  * Created by Domnica on 1/28/2017.

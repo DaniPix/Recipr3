@@ -1,10 +1,9 @@
-package com.dani2pix.recipr.authentication.view;
+package com.dani2pix.recipr.ui.authentication.view;
 
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -16,8 +15,9 @@ import android.widget.Toast;
 
 import com.dani2pix.recipr.R;
 import com.dani2pix.recipr.ReciprApplication;
-import com.dani2pix.recipr.authentication.presenter.AuthPresenter;
+import com.dani2pix.recipr.ui.authentication.presenter.AuthPresenter;
 import com.dani2pix.recipr.constants.Constants;
+import com.dani2pix.recipr.ui.dashboard.view.DashActivity;
 
 import javax.inject.Inject;
 
@@ -87,6 +87,10 @@ public class AuthFragment extends Fragment implements AuthView, View.OnClickList
     public void onSessionReceived(String sessionId) {
         prefs.edit().putString(Constants.SESSION_ID, sessionId).apply();
         Toast.makeText(context, "Authentication successful.", Toast.LENGTH_SHORT).show();
+        //TODO Change this
+        Intent intent = new Intent(context, DashActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 
     @Override

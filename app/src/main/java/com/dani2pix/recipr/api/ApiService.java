@@ -1,10 +1,10 @@
 package com.dani2pix.recipr.api;
 
 
-import com.dani2pix.recipr.authentication.model.GuestSession;
-import com.dani2pix.recipr.authentication.model.Token;
-import com.dani2pix.recipr.authentication.model.Session;
-import com.dani2pix.recipr.authentication.model.ValidatedToken;
+import com.dani2pix.recipr.ui.authentication.model.GuestSession;
+import com.dani2pix.recipr.ui.authentication.model.Token;
+import com.dani2pix.recipr.ui.authentication.model.Session;
+import com.dani2pix.recipr.ui.authentication.model.ValidatedToken;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;

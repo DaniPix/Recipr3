@@ -1,7 +1,7 @@
-package com.dani2pix.recipr.authentication.presenter;
+package com.dani2pix.recipr.ui.authentication.presenter;
 
 import com.dani2pix.recipr.api.http.AuthService;
-import com.dani2pix.recipr.authentication.view.AuthView;
+import com.dani2pix.recipr.ui.authentication.view.AuthView;
 
 import java.lang.ref.WeakReference;
 

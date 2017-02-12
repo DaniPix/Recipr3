@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.dani2pix.recipr.splashscreen.SplashScreen">
+    tools:context=".ui.splashscreen.SplashScreen">
 
     <include layout="@layout/content_splash_screen" />
 

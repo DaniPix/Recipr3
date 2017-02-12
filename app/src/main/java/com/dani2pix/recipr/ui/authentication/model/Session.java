@@ -1,4 +1,4 @@
-package com.dani2pix.recipr.authentication.model;
+package com.dani2pix.recipr.ui.authentication.model;
 
 import com.google.gson.annotations.SerializedName;
 

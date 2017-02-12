@@ -1,29 +1,14 @@
-package com.dani2pix.recipr.splashscreen;
+package com.dani2pix.recipr.ui.splashscreen;
 
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Toast;
 
 
 import com.dani2pix.recipr.R;
-import com.dani2pix.recipr.ReciprApplication;
-import com.dani2pix.recipr.authentication.view.AuthActivity;
-import com.dani2pix.recipr.authentication.view.AuthFragment;
-
-import javax.inject.Inject;
-
-import retrofit2.Retrofit;
+import com.dani2pix.recipr.ui.authentication.view.AuthActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
