@@ -7,6 +7,8 @@ import com.dani2pix.recipr.api.http.AuthService;
 import com.dani2pix.recipr.api.http.AuthServiceImpl;
 import com.dani2pix.recipr.ui.authentication.presenter.AuthPresenter;
 import com.dani2pix.recipr.ui.authentication.presenter.AuthPresenterImpl;
+import com.dani2pix.recipr.ui.dashboard.presenter.DashboardPresenter;
+import com.dani2pix.recipr.ui.dashboard.presenter.DashboardPresenterImpl;
 
 import javax.inject.Singleton;
 
@@ -49,5 +51,11 @@ public class ApiModule {
     @Singleton
     public AuthPresenter provideAuthPresenter(AuthService authService) {
         return new AuthPresenterImpl(authService);
+    }
+
+    @Provides
+    @Singleton
+    public DashboardPresenter provideDashboardPresenter() {
+        return new DashboardPresenterImpl();
     }
 }
