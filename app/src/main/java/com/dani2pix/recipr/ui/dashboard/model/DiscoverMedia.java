@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Domnica on 2/18/2017.
  */
 
-public class Movies {
+public class DiscoverMedia {
 
     @SerializedName("page")
     private int page;

@@ -12,9 +12,9 @@ import android.widget.Toast;
 import com.dani2pix.recipr.R;
 import com.dani2pix.recipr.ReciprApplication;
 import com.dani2pix.recipr.ui.dashboard.adapter.DashboardAdapter;
-import com.dani2pix.recipr.ui.dashboard.model.Movies;
+import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
 import com.dani2pix.recipr.ui.dashboard.model.People;
-import com.dani2pix.recipr.ui.dashboard.model.TvShows;
+import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 import com.dani2pix.recipr.ui.dashboard.presenter.MoviesPresenter;
 
 import javax.inject.Inject;
@@ -49,6 +49,8 @@ public class MoviesFragment extends DashboardFragment implements DashboardView {
             }
         });
 
+
+        presenter.exploreMovies();
         return view;
     }
 
@@ -65,15 +67,15 @@ public class MoviesFragment extends DashboardFragment implements DashboardView {
     }
 
     @Override
-    public void onMoviesReceived(Movies movies) {
-        DashboardAdapter adapter = new DashboardAdapter<>(movies.getResults(), context);
+    public void onMoviesReceived(DiscoverMedia discoverMedia) {
+        DashboardAdapter adapter = new DashboardAdapter<>(discoverMedia.getResults(), context);
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(context));
         swipeRefreshList.setRefreshing(false);
     }
 
     @Override
-    public void onTvShowsReceived(TvShows shows) {
+    public void onTvShowsReceived(DiscoverMedia discoverMedia) {
         // do nothing
     }
 

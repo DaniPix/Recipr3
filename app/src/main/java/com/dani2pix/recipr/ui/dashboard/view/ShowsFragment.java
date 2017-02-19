@@ -1,9 +1,9 @@
 package com.dani2pix.recipr.ui.dashboard.view;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +11,10 @@ import android.widget.Toast;
 
 import com.dani2pix.recipr.R;
 import com.dani2pix.recipr.ReciprApplication;
-import com.dani2pix.recipr.ui.dashboard.model.Movies;
+import com.dani2pix.recipr.ui.dashboard.adapter.DashboardAdapter;
+import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
 import com.dani2pix.recipr.ui.dashboard.model.People;
-import com.dani2pix.recipr.ui.dashboard.model.TvShows;
+import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 import com.dani2pix.recipr.ui.dashboard.presenter.ShowsPresenter;
 
 import javax.inject.Inject;
@@ -46,6 +47,9 @@ public class ShowsFragment extends DashboardFragment implements DashboardView {
             }
         });
 
+
+        presenter.exploreTvShows();
+
         return view;
     }
 
@@ -62,13 +66,15 @@ public class ShowsFragment extends DashboardFragment implements DashboardView {
     }
 
     @Override
-    public void onMoviesReceived(Movies movies) {
+    public void onMoviesReceived(DiscoverMedia discoverMedia) {
        // do nothing
     }
 
     @Override
-    public void onTvShowsReceived(TvShows shows) {
-        Toast.makeText(context, "Shows received.", Toast.LENGTH_SHORT).show();
+    public void onTvShowsReceived(DiscoverMedia discoverMedia) {
+        DashboardAdapter adapter = new DashboardAdapter<>(discoverMedia.getResults(), context);
+        list.setAdapter(adapter);
+        list.setLayoutManager(new LinearLayoutManager(context));
         swipeRefreshList.setRefreshing(false);
     }
 

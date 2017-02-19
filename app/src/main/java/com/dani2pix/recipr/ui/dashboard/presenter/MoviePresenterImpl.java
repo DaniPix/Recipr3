@@ -1,7 +1,7 @@
 package com.dani2pix.recipr.ui.dashboard.presenter;
 
 import com.dani2pix.recipr.api.http.DashService;
-import com.dani2pix.recipr.ui.dashboard.model.Movies;
+import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
 import com.dani2pix.recipr.ui.dashboard.view.DashboardView;
 
 import java.lang.ref.WeakReference;
@@ -26,7 +26,7 @@ public class MoviePresenterImpl implements MoviesPresenter {
     public void exploreMovies() {
         dashService.exploreMovies(new DashService.DashCallback() {
             @Override
-            public void onMoviesResponse(Movies response) {
+            public void onMoviesResponse(DiscoverMedia response) {
                 view.get().onMoviesReceived(response);
             }
 

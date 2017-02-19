@@ -1,8 +1,8 @@
 package com.dani2pix.recipr.ui.dashboard.view;
 
-import com.dani2pix.recipr.ui.dashboard.model.Movies;
+import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
 import com.dani2pix.recipr.ui.dashboard.model.People;
-import com.dani2pix.recipr.ui.dashboard.model.TvShows;
+import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 import com.dani2pix.recipr.ui.view.View;
 
 /**
@@ -11,9 +11,9 @@ import com.dani2pix.recipr.ui.view.View;
 
 public interface DashboardView extends View {
 
-    void onMoviesReceived(Movies movies);
+    void onMoviesReceived(DiscoverMedia discoverMedia);
 
-    void onTvShowsReceived(TvShows shows);
+    void onTvShowsReceived(DiscoverMedia discoverMedia);
 
     void onPopularPeopleReceived(People people);
 

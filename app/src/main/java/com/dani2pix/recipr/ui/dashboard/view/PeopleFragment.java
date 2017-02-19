@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 import com.dani2pix.recipr.R;
 import com.dani2pix.recipr.ReciprApplication;
-import com.dani2pix.recipr.ui.dashboard.model.Movies;
+import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
 import com.dani2pix.recipr.ui.dashboard.model.People;
-import com.dani2pix.recipr.ui.dashboard.model.TvShows;
+import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 import com.dani2pix.recipr.ui.dashboard.presenter.PeoplePresenter;
 
 import javax.inject.Inject;
@@ -62,12 +62,12 @@ public class PeopleFragment extends DashboardFragment implements DashboardView {
     }
 
     @Override
-    public void onMoviesReceived(Movies movies) {
+    public void onMoviesReceived(DiscoverMedia discoverMedia) {
         // do nothing
     }
 
     @Override
-    public void onTvShowsReceived(TvShows shows) {
+    public void onTvShowsReceived(DiscoverMedia discoverMedia) {
         // do nothing
     }
 

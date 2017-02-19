@@ -5,9 +5,9 @@ import com.dani2pix.recipr.ui.authentication.model.GuestSession;
 import com.dani2pix.recipr.ui.authentication.model.Token;
 import com.dani2pix.recipr.ui.authentication.model.Session;
 import com.dani2pix.recipr.ui.authentication.model.ValidatedToken;
-import com.dani2pix.recipr.ui.dashboard.model.Movies;
+import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
 import com.dani2pix.recipr.ui.dashboard.model.People;
-import com.dani2pix.recipr.ui.dashboard.model.TvShows;
+import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -36,10 +36,10 @@ public interface ApiService {
     Observable<GuestSession> requestGuestSession(@Query(ApiConstants.QUERY_API_KEY) String apiKey);
 
     @GET(ApiConstants.EXPLORE_MOVIES)
-    Observable<Movies> exploreMovies(@Query(ApiConstants.QUERY_API_KEY) String apiKey);
+    Observable<DiscoverMedia> exploreMovies(@Query(ApiConstants.QUERY_API_KEY) String apiKey);
 
     @GET(ApiConstants.EXPLORE_TV_SHOWS)
-    Observable<TvShows> exploreTvShows(@Query(ApiConstants.QUERY_API_KEY) String apiKey);
+    Observable<DiscoverMedia> exploreTvShows(@Query(ApiConstants.QUERY_API_KEY) String apiKey);
 
     @GET(ApiConstants.EXPLORE_PEOPLE)
     Observable<People> explorePopularPeople(@Query(ApiConstants.QUERY_API_KEY) String apiKey);

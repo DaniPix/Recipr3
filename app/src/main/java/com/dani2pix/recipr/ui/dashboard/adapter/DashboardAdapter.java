@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import com.dani2pix.recipr.R;
 import com.dani2pix.recipr.ui.dashboard.model.Movie;
+import com.dani2pix.recipr.ui.dashboard.model.People;
+import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 import com.squareup.picasso.Picasso;
 
 import java.util.Collections;
@@ -67,6 +69,15 @@ public class DashboardAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
             holder.overview.setText(movie.getOverview());
             holder.metaData.setText(movie.getReleaseDate() + ", " + movie.getVoteCount());
             picasso.load("https://image.tmdb.org/t/p/" + "w300" + movie.getPosterPath()).into(holder.poster);
+        } else if (item instanceof TvShow) {
+            TvShow show = (TvShow) item;
+
+            holder.title.setText(show.getName());
+            holder.overview.setText(show.getOverview());
+            holder.metaData.setText(show.getFirstAirDate() + ", " + show.getVoteCount());
+            picasso.load("https://image.tmdb.org/t/p/" + "w300" + show.getPosterPath()).into(holder.poster);
+        } else {
+            People people = (People) item;
         }
     }
 }

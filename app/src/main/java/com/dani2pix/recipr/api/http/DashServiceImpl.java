@@ -4,9 +4,9 @@ import android.util.Log;
 
 import com.dani2pix.recipr.api.ApiConstants;
 import com.dani2pix.recipr.api.ApiService;
-import com.dani2pix.recipr.ui.dashboard.model.Movies;
+import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
 import com.dani2pix.recipr.ui.dashboard.model.People;
-import com.dani2pix.recipr.ui.dashboard.model.TvShows;
+import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 
 import javax.inject.Inject;
 
@@ -30,10 +30,10 @@ public class DashServiceImpl implements DashService {
 
     @Override
     public void exploreMovies(final DashCallback dashCallback) {
-        Observable<Movies> observable = networkService.exploreMovies(ApiConstants.API_KEY);
+        Observable<DiscoverMedia> observable = networkService.exploreMovies(ApiConstants.API_KEY);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<Movies>() {
+                .subscribe(new Observer<DiscoverMedia>() {
                     @Override
                     public void onCompleted() {
                         // do nothing
@@ -46,18 +46,18 @@ public class DashServiceImpl implements DashService {
                     }
 
                     @Override
-                    public void onNext(Movies movies) {
-                        dashCallback.onMoviesResponse(movies);
+                    public void onNext(DiscoverMedia discoverMedia) {
+                        dashCallback.onMoviesResponse(discoverMedia);
                     }
                 });
     }
 
     @Override
     public void exploreTvShows(final DashCallback dashCallback) {
-        Observable<TvShows> observable = networkService.exploreTvShows(ApiConstants.API_KEY);
+        Observable<DiscoverMedia> observable = networkService.exploreTvShows(ApiConstants.API_KEY);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<TvShows>() {
+                .subscribe(new Observer<DiscoverMedia>() {
                     @Override
                     public void onCompleted() {
                         // do nothing
@@ -70,7 +70,7 @@ public class DashServiceImpl implements DashService {
                     }
 
                     @Override
-                    public void onNext(TvShows shows) {
+                    public void onNext(DiscoverMedia shows) {
                         dashCallback.onTvShowsResponse(shows);
                     }
                 });
