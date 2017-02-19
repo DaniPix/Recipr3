@@ -1,13 +1,15 @@
 package com.dani2pix.recipr;
 
 import com.dani2pix.recipr.ui.authentication.presenter.AuthPresenterImpl;
-import com.dani2pix.recipr.ui.authentication.view.AuthActivity;
 import com.dani2pix.recipr.ui.authentication.view.AuthFragment;
-import com.dani2pix.recipr.ui.dashboard.adapter.DashboardAdapter;
-import com.dani2pix.recipr.ui.dashboard.presenter.DashboardPresenter;
-import com.dani2pix.recipr.ui.dashboard.presenter.DashboardPresenterImpl;
+import com.dani2pix.recipr.ui.dashboard.presenter.MoviePresenterImpl;
+import com.dani2pix.recipr.ui.dashboard.presenter.PeoplePresenterImpl;
+import com.dani2pix.recipr.ui.dashboard.presenter.ShowsPresenterImpl;
 import com.dani2pix.recipr.ui.dashboard.view.DashActivity;
 import com.dani2pix.recipr.ui.dashboard.view.DashboardFragment;
+import com.dani2pix.recipr.ui.dashboard.view.MoviesFragment;
+import com.dani2pix.recipr.ui.dashboard.view.PeopleFragment;
+import com.dani2pix.recipr.ui.dashboard.view.ShowsFragment;
 import com.dani2pix.recipr.ui.splashscreen.SplashScreen;
 
 import javax.inject.Singleton;
@@ -31,7 +33,17 @@ public interface ApplicationComponent {
 
     void inject(SplashScreen target);
 
-    void inject(DashboardPresenterImpl target);
+    void inject(MoviePresenterImpl target);
+
+    void inject(ShowsPresenterImpl target);
+
+    void inject(PeoplePresenterImpl target);
 
     void inject(DashboardFragment target);
+
+    void inject(MoviesFragment target);
+
+    void inject(ShowsFragment target);
+
+    void inject(PeopleFragment target);
 }

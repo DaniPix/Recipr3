@@ -1,7 +1,7 @@
 package com.dani2pix.recipr.ui.dashboard.presenter;
 
 import com.dani2pix.recipr.api.http.DashService;
-import com.dani2pix.recipr.ui.dashboard.model.Movies;
+import com.dani2pix.recipr.ui.dashboard.model.TvShows;
 import com.dani2pix.recipr.ui.dashboard.view.DashboardView;
 
 import java.lang.ref.WeakReference;
@@ -9,25 +9,25 @@ import java.lang.ref.WeakReference;
 import javax.inject.Inject;
 
 /**
- * Created by Domnica on 2/12/2017.
+ * Created by Domnica on 2/19/2017.
  */
 
-public class DashboardPresenterImpl implements DashboardPresenter {
+public class ShowsPresenterImpl implements ShowsPresenter {
 
     private WeakReference<DashboardView> view;
     private DashService dashService;
 
     @Inject
-    public DashboardPresenterImpl(DashService dashService){
+    public ShowsPresenterImpl(DashService dashService) {
         this.dashService = dashService;
     }
 
     @Override
-    public void exploreMovies() {
-        dashService.exploreMovies(new DashService.DashCallback() {
+    public void exploreTvShows() {
+        dashService.exploreTvShows(new DashService.DashCallback() {
             @Override
-            public void onMoviesResponse(Movies response) {
-                view.get().onMoviesReceived(response);
+            public void onTvShowsResponse(TvShows response) {
+                view.get().onTvShowsReceived(response);
             }
 
             @Override
@@ -36,17 +36,6 @@ public class DashboardPresenterImpl implements DashboardPresenter {
             }
         });
     }
-
-    @Override
-    public void exploreTvShows() {
-
-    }
-
-    @Override
-    public void explorePeople() {
-
-    }
-
 
     @Override
     public void attachView(DashboardView view) {

@@ -5,6 +5,8 @@ import android.util.Log;
 import com.dani2pix.recipr.api.ApiConstants;
 import com.dani2pix.recipr.api.ApiService;
 import com.dani2pix.recipr.ui.dashboard.model.Movies;
+import com.dani2pix.recipr.ui.dashboard.model.People;
+import com.dani2pix.recipr.ui.dashboard.model.TvShows;
 
 import javax.inject.Inject;
 
@@ -51,12 +53,50 @@ public class DashServiceImpl implements DashService {
     }
 
     @Override
-    public void exploreTvShows(DashCallback dashCallback) {
+    public void exploreTvShows(final DashCallback dashCallback) {
+        Observable<TvShows> observable = networkService.exploreTvShows(ApiConstants.API_KEY);
+        observable.observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Observer<TvShows>() {
+                    @Override
+                    public void onCompleted() {
+                        // do nothing
+                    }
 
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(getClass().getName(), e.getMessage(), e);
+                        dashCallback.onError();
+                    }
+
+                    @Override
+                    public void onNext(TvShows shows) {
+                        dashCallback.onTvShowsResponse(shows);
+                    }
+                });
     }
 
     @Override
-    public void explorePeople(DashCallback dashCallback) {
+    public void explorePeople(final DashCallback dashCallback) {
+        Observable<People> observable = networkService.explorePopularPeople(ApiConstants.API_KEY);
+        observable.observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Observer<People>() {
+                    @Override
+                    public void onCompleted() {
+                        // do nothing
+                    }
 
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(getClass().getName(), e.getMessage(), e);
+                        dashCallback.onError();
+                    }
+
+                    @Override
+                    public void onNext(People people) {
+                        dashCallback.onPeopleResponse(people);
+                    }
+                });
     }
 }

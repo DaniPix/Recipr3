@@ -9,8 +9,12 @@ import com.dani2pix.recipr.api.http.DashService;
 import com.dani2pix.recipr.api.http.DashServiceImpl;
 import com.dani2pix.recipr.ui.authentication.presenter.AuthPresenter;
 import com.dani2pix.recipr.ui.authentication.presenter.AuthPresenterImpl;
-import com.dani2pix.recipr.ui.dashboard.presenter.DashboardPresenter;
-import com.dani2pix.recipr.ui.dashboard.presenter.DashboardPresenterImpl;
+import com.dani2pix.recipr.ui.dashboard.presenter.MoviePresenterImpl;
+import com.dani2pix.recipr.ui.dashboard.presenter.MoviesPresenter;
+import com.dani2pix.recipr.ui.dashboard.presenter.PeoplePresenter;
+import com.dani2pix.recipr.ui.dashboard.presenter.PeoplePresenterImpl;
+import com.dani2pix.recipr.ui.dashboard.presenter.ShowsPresenter;
+import com.dani2pix.recipr.ui.dashboard.presenter.ShowsPresenterImpl;
 
 import javax.inject.Singleton;
 
@@ -57,13 +61,25 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public DashService providesDashService(ApiService apiService){
+    public DashService providesDashService(ApiService apiService) {
         return new DashServiceImpl(apiService);
     }
 
     @Provides
     @Singleton
-    public DashboardPresenter provideDashboardPresenter(DashService dashService) {
-        return new DashboardPresenterImpl(dashService);
+    public MoviesPresenter provideMoviePresenter(DashService dashService) {
+        return new MoviePresenterImpl(dashService);
+    }
+
+    @Provides
+    @Singleton
+    public ShowsPresenter provideShowsPresenter(DashService dashService) {
+        return new ShowsPresenterImpl(dashService);
+    }
+
+    @Provides
+    @Singleton
+    public PeoplePresenter providePeoplePresenter(DashService dashService) {
+        return new PeoplePresenterImpl(dashService);
     }
 }

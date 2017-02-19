@@ -9,9 +9,13 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 import com.dani2pix.recipr.R;
 import com.dani2pix.recipr.ui.dashboard.view.DashboardFragment;
+import com.dani2pix.recipr.ui.dashboard.view.MoviesFragment;
+import com.dani2pix.recipr.ui.dashboard.view.PeopleFragment;
+import com.dani2pix.recipr.ui.dashboard.view.ShowsFragment;
 
 import javax.inject.Inject;
 
@@ -30,7 +34,16 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new DashboardFragment().newInstance(position + 1);
+        switch (position) {
+            case 0:
+                return new MoviesFragment();
+            case 1:
+                return new ShowsFragment();
+            case 2:
+                return new PeopleFragment();
+            default:
+                return null;
+        }
     }
 
     @Override
