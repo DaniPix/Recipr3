@@ -8,12 +8,12 @@ import java.util.List;
  * Created by Domnica on 2/18/2017.
  */
 
-public class DiscoverMedia {
+public class DiscoverMedia<T> {
 
     @SerializedName("page")
     private int page;
     @SerializedName("results")
-    private List<Movie> results;
+    private List<T> results;
     @SerializedName("total_results")
     private int totalResults;
     @SerializedName("total_pages")
@@ -23,7 +23,7 @@ public class DiscoverMedia {
         return page;
     }
 
-    public List<Movie> getResults() {
+    public List<T> getResults() {
         return results;
     }
 

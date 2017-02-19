@@ -5,6 +5,7 @@ import android.util.Log;
 import com.dani2pix.recipr.api.ApiConstants;
 import com.dani2pix.recipr.api.ApiService;
 import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
+import com.dani2pix.recipr.ui.dashboard.model.Movie;
 import com.dani2pix.recipr.ui.dashboard.model.People;
 import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 
@@ -30,7 +31,7 @@ public class DashServiceImpl implements DashService {
 
     @Override
     public void exploreMovies(final DashCallback dashCallback) {
-        Observable<DiscoverMedia> observable = networkService.exploreMovies(ApiConstants.API_KEY);
+        Observable<DiscoverMedia<Movie>> observable = networkService.exploreMovies(ApiConstants.API_KEY);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<DiscoverMedia>() {
@@ -54,7 +55,7 @@ public class DashServiceImpl implements DashService {
 
     @Override
     public void exploreTvShows(final DashCallback dashCallback) {
-        Observable<DiscoverMedia> observable = networkService.exploreTvShows(ApiConstants.API_KEY);
+        Observable<DiscoverMedia<TvShow>> observable = networkService.exploreTvShows(ApiConstants.API_KEY);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<DiscoverMedia>() {

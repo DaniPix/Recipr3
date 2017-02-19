@@ -15,6 +15,10 @@
     <!-- Messages -->
     <string name="general_error_message">Something went wrong. Please try again.</string>
 
+
+    <!-- Hints -->
+    <string name="search">Search</string>
+
     <!-- Placeholders -->
     <string name="poster_placeholder">Biscuit muffin lemon drops sesame snaps tootsie roll marshmallow.</string>
     <string name="title_placeholder">Biscuit muffin lemon drops sesame snaps tootsie roll marshmallow.</string>
