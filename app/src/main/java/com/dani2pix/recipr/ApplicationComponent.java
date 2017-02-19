@@ -3,6 +3,7 @@ package com.dani2pix.recipr;
 import com.dani2pix.recipr.ui.authentication.presenter.AuthPresenterImpl;
 import com.dani2pix.recipr.ui.authentication.view.AuthActivity;
 import com.dani2pix.recipr.ui.authentication.view.AuthFragment;
+import com.dani2pix.recipr.ui.dashboard.adapter.DashboardAdapter;
 import com.dani2pix.recipr.ui.dashboard.presenter.DashboardPresenter;
 import com.dani2pix.recipr.ui.dashboard.presenter.DashboardPresenterImpl;
 import com.dani2pix.recipr.ui.dashboard.view.DashActivity;

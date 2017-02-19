@@ -8,11 +8,6 @@ import com.dani2pix.recipr.ui.presenter.Presenter;
  */
 
 public interface DashboardPresenter extends Presenter<DashboardView> {
-
-    void search();
-
-    void explore();
-
     void exploreMovies();
 
     void exploreTvShows();

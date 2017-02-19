@@ -5,6 +5,8 @@ import com.dani2pix.recipr.api.ApiConstants;
 import com.dani2pix.recipr.api.ApiService;
 import com.dani2pix.recipr.api.http.AuthService;
 import com.dani2pix.recipr.api.http.AuthServiceImpl;
+import com.dani2pix.recipr.api.http.DashService;
+import com.dani2pix.recipr.api.http.DashServiceImpl;
 import com.dani2pix.recipr.ui.authentication.presenter.AuthPresenter;
 import com.dani2pix.recipr.ui.authentication.presenter.AuthPresenterImpl;
 import com.dani2pix.recipr.ui.dashboard.presenter.DashboardPresenter;
@@ -55,7 +57,13 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    public DashboardPresenter provideDashboardPresenter() {
-        return new DashboardPresenterImpl();
+    public DashService providesDashService(ApiService apiService){
+        return new DashServiceImpl(apiService);
+    }
+
+    @Provides
+    @Singleton
+    public DashboardPresenter provideDashboardPresenter(DashService dashService) {
+        return new DashboardPresenterImpl(dashService);
     }
 }

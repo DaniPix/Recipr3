@@ -35,20 +35,18 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 4 total pages.
-        return 4;
+        // Show 3 total pages.
+        return 3;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return context.getString(R.string.explore);
-            case 1:
                 return context.getString(R.string.movies);
-            case 2:
+            case 1:
                 return context.getString(R.string.shows);
-            case 3:
+            case 2:
                 return context.getString(R.string.people);
             default:
                 return null;

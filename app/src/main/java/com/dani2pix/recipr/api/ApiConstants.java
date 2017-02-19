@@ -21,6 +21,11 @@ public final class ApiConstants {
     public static final String CREATE_SESSION = "authentication/session/new";
     public static final String CREATE_GUEST_SESSION = "authentication/guest_session/new";
 
+    //Dashboard constants
+    public static final String EXPLORE_MOVIES = "discover/movie";
+    public static final String EXPLORE_TV_SHOWS = "discover/tv";
+    public static final String EXPLORE_PEOPLE = "person/popular";
+
     private ApiConstants() {
         // avoid instantiation
     }

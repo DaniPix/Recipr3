@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:layout_margin="10dp">
+
+    <ImageView
+        android:id="@+id/poster"
+        android:layout_width="130dp"
+        android:layout_height="180dp"
+        android:contentDescription="@string/poster_placeholder"
+        android:src="@drawable/poster_placeholder" />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/AppTheme.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/poster"
+        tools:text="@string/title_placeholder" />
+
+    <TextView
+        android:id="@+id/genres"
+        style="@style/AppTheme.Subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_toEndOf="@id/poster"
+        tools:text="@string/genres_placeholder" />
+
+    <TextView
+        android:id="@+id/overview"
+        style="@style/AppTheme.Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/genres"
+        android:layout_toEndOf="@id/poster"
+        tools:text="@string/overview_placeholder" />
+
+    <TextView
+        android:id="@+id/metaData"
+        style="@style/AppTheme.MetaData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@id/poster"
+        tools:text="@string/meta_data_placeholder" />
+</RelativeLayout>

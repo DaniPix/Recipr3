@@ -18,7 +18,7 @@
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:contentDescription="@string/image_placeholder"
+        android:contentDescription="@string/poster_placeholder"
         android:src="@drawable/logo" />
 
 </RelativeLayout>

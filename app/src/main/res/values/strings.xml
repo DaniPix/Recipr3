@@ -7,13 +7,20 @@
     <string name="username">username</string>
     <string name="password">password</string>
 
-
     <!-- Dashboard Module -->
-    <string name="explore">Explore</string>
     <string name="movies">Movies</string>
     <string name="shows">TV Shows</string>
     <string name="people">People</string>
 
+    <!-- Messages -->
+    <string name="general_error_message">Something went wrong. Please try again.</string>
+
     <!-- Placeholders -->
-    <string name="image_placeholder">Image Placeholder</string>
+    <string name="poster_placeholder">Biscuit muffin lemon drops sesame snaps tootsie roll marshmallow.</string>
+    <string name="title_placeholder">Biscuit muffin lemon drops sesame snaps tootsie roll marshmallow.</string>
+    <string name="genres_placeholder">Biscuit muffin lemon drops sesame snaps tootsie roll marshmallow.</string>
+    <string name="meta_data_placeholder">Biscuit muffin lemon drops sesame snaps tootsie roll marshmallow.</string>
+    <string name="overview_placeholder">Biscuit muffin lemon drops sesame snaps tootsie roll marshmallow. Liquorice pie dessert bear claw donut topping sweet roll bear claw carrot cake. Chupa chups muffin pie croissant. Pie powder caramels jujubes bear claw apple pie danish.
+Jujubes jelly-o bonbon topping brownie. Chocolate cake jelly-o brownie jelly sweet roll tootsie roll jelly soufflé jelly beans. Jujubes croissant tart oat cake cookie jujubes candy canes macaroon. Jelly dessert cake pudding caramels.
+Danish chupa chups jujubes cookie. Gingerbread chocolate bar cookie cupcake marshmallow. Cotton candy icing cotton candy apple pie muffin jelly. Sweet powder tart cookie wafer macaroon apple pie.</string>
 </resources>
