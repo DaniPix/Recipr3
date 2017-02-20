@@ -13,6 +13,7 @@ import com.dani2pix.recipr.R;
 import com.dani2pix.recipr.ReciprApplication;
 import com.dani2pix.recipr.ui.dashboard.adapter.DashboardAdapter;
 import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
+import com.dani2pix.recipr.ui.dashboard.model.Movie;
 import com.dani2pix.recipr.ui.dashboard.model.People;
 import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 import com.dani2pix.recipr.ui.dashboard.presenter.ShowsPresenter;
@@ -68,12 +69,12 @@ public class ShowsFragment extends DashboardFragment implements DashboardView {
     }
 
     @Override
-    public void onMoviesReceived(DiscoverMedia discoverMedia) {
-       // do nothing
+    public void onMoviesReceived(DiscoverMedia<Movie> discoverMedia) {
+        // do nothing
     }
 
     @Override
-    public void onTvShowsReceived(DiscoverMedia discoverMedia) {
+    public void onTvShowsReceived(DiscoverMedia<TvShow> discoverMedia) {
         DashboardAdapter adapter = new DashboardAdapter<>(discoverMedia.getResults(), context);
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(context));
@@ -81,7 +82,7 @@ public class ShowsFragment extends DashboardFragment implements DashboardView {
     }
 
     @Override
-    public void onPopularPeopleReceived(DiscoverMedia discoverMedia) {
+    public void onPopularPeopleReceived(DiscoverMedia<People> discoverMedia) {
         // do nothing
     }
 

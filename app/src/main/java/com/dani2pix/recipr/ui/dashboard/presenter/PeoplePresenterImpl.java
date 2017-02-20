@@ -27,7 +27,7 @@ public class PeoplePresenterImpl implements PeoplePresenter {
     public void explorePeople() {
         dashService.explorePeople(new DashService.DashCallback() {
             @Override
-            public void onPeopleResponse(DiscoverMedia response) {
+            public void onPeopleResponse(DiscoverMedia<People> response) {
                 view.get().onPopularPeopleReceived(response);
             }
 

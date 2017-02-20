@@ -34,7 +34,7 @@ public class DashServiceImpl implements DashService {
         Observable<DiscoverMedia<Movie>> observable = networkService.exploreMovies(ApiConstants.API_KEY);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<DiscoverMedia>() {
+                .subscribe(new Observer<DiscoverMedia<Movie>>() {
                     @Override
                     public void onCompleted() {
                         // do nothing
@@ -47,7 +47,7 @@ public class DashServiceImpl implements DashService {
                     }
 
                     @Override
-                    public void onNext(DiscoverMedia discoverMedia) {
+                    public void onNext(DiscoverMedia<Movie> discoverMedia) {
                         dashCallback.onMoviesResponse(discoverMedia);
                     }
                 });
@@ -58,7 +58,7 @@ public class DashServiceImpl implements DashService {
         Observable<DiscoverMedia<TvShow>> observable = networkService.exploreTvShows(ApiConstants.API_KEY);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<DiscoverMedia>() {
+                .subscribe(new Observer<DiscoverMedia<TvShow>>() {
                     @Override
                     public void onCompleted() {
                         // do nothing
@@ -71,7 +71,7 @@ public class DashServiceImpl implements DashService {
                     }
 
                     @Override
-                    public void onNext(DiscoverMedia shows) {
+                    public void onNext(DiscoverMedia<TvShow> shows) {
                         dashCallback.onTvShowsResponse(shows);
                     }
                 });
@@ -82,7 +82,7 @@ public class DashServiceImpl implements DashService {
         Observable<DiscoverMedia<People>> observable = networkService.explorePopularPeople(ApiConstants.API_KEY);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<DiscoverMedia>() {
+                .subscribe(new Observer<DiscoverMedia<People>>() {
                     @Override
                     public void onCompleted() {
                         // do nothing
@@ -95,7 +95,7 @@ public class DashServiceImpl implements DashService {
                     }
 
                     @Override
-                    public void onNext(DiscoverMedia people) {
+                    public void onNext(DiscoverMedia<People> people) {
                         dashCallback.onPeopleResponse(people);
                     }
                 });

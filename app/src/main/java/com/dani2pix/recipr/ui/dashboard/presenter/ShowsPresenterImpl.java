@@ -27,7 +27,7 @@ public class ShowsPresenterImpl implements ShowsPresenter {
     public void exploreTvShows() {
         dashService.exploreTvShows(new DashService.DashCallback() {
             @Override
-            public void onTvShowsResponse(DiscoverMedia response) {
+            public void onTvShowsResponse(DiscoverMedia<TvShow> response) {
                 view.get().onTvShowsReceived(response);
             }
 

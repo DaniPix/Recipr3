@@ -1,6 +1,7 @@
 package com.dani2pix.recipr.api.http;
 
 import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
+import com.dani2pix.recipr.ui.dashboard.model.Movie;
 import com.dani2pix.recipr.ui.dashboard.model.People;
 import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 
@@ -18,15 +19,15 @@ public interface DashService {
 
 
     abstract class DashCallback {
-        public void onMoviesResponse(DiscoverMedia response) {
+        public void onMoviesResponse(DiscoverMedia<Movie> response) {
 
         }
 
-        public void onTvShowsResponse(DiscoverMedia response) {
+        public void onTvShowsResponse(DiscoverMedia<TvShow> response) {
 
         }
 
-        public void onPeopleResponse(DiscoverMedia response) {
+        public void onPeopleResponse(DiscoverMedia<People> response) {
 
         }
 
