@@ -80,7 +80,7 @@ public class MoviesFragment extends DashboardFragment implements DashboardView {
     }
 
     @Override
-    public void onPopularPeopleReceived(People people) {
+    public void onPopularPeopleReceived(DiscoverMedia discoverMedia) {
         // do nothing
     }
 

@@ -79,10 +79,10 @@ public class DashServiceImpl implements DashService {
 
     @Override
     public void explorePeople(final DashCallback dashCallback) {
-        Observable<People> observable = networkService.explorePopularPeople(ApiConstants.API_KEY);
+        Observable<DiscoverMedia<People>> observable = networkService.explorePopularPeople(ApiConstants.API_KEY);
         observable.observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<People>() {
+                .subscribe(new Observer<DiscoverMedia>() {
                     @Override
                     public void onCompleted() {
                         // do nothing
@@ -95,7 +95,7 @@ public class DashServiceImpl implements DashService {
                     }
 
                     @Override
-                    public void onNext(People people) {
+                    public void onNext(DiscoverMedia people) {
                         dashCallback.onPeopleResponse(people);
                     }
                 });

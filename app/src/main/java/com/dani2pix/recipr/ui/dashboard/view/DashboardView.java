@@ -15,7 +15,7 @@ public interface DashboardView extends View {
 
     void onTvShowsReceived(DiscoverMedia discoverMedia);
 
-    void onPopularPeopleReceived(People people);
+    void onPopularPeopleReceived(DiscoverMedia discoverMedia);
 
     void onError();
 

@@ -17,6 +17,8 @@ import com.dani2pix.recipr.ui.dashboard.model.People;
 import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 import com.dani2pix.recipr.ui.dashboard.presenter.ShowsPresenter;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 /**
@@ -79,7 +81,7 @@ public class ShowsFragment extends DashboardFragment implements DashboardView {
     }
 
     @Override
-    public void onPopularPeopleReceived(People people) {
+    public void onPopularPeopleReceived(DiscoverMedia discoverMedia) {
         // do nothing
     }
 

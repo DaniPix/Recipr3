@@ -26,7 +26,7 @@ public interface DashService {
 
         }
 
-        public void onPeopleResponse(People response) {
+        public void onPeopleResponse(DiscoverMedia response) {
 
         }
 

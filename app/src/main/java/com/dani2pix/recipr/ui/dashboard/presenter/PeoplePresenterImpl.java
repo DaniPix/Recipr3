@@ -1,6 +1,7 @@
 package com.dani2pix.recipr.ui.dashboard.presenter;
 
 import com.dani2pix.recipr.api.http.DashService;
+import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
 import com.dani2pix.recipr.ui.dashboard.model.People;
 import com.dani2pix.recipr.ui.dashboard.view.DashboardView;
 
@@ -26,7 +27,7 @@ public class PeoplePresenterImpl implements PeoplePresenter {
     public void explorePeople() {
         dashService.explorePeople(new DashService.DashCallback() {
             @Override
-            public void onPeopleResponse(People response) {
+            public void onPeopleResponse(DiscoverMedia response) {
                 view.get().onPopularPeopleReceived(response);
             }
 

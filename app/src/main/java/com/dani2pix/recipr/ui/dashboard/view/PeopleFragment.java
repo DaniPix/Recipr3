@@ -3,6 +3,7 @@ package com.dani2pix.recipr.ui.dashboard.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,13 @@ import android.widget.Toast;
 
 import com.dani2pix.recipr.R;
 import com.dani2pix.recipr.ReciprApplication;
+import com.dani2pix.recipr.ui.dashboard.adapter.DashboardAdapter;
 import com.dani2pix.recipr.ui.dashboard.model.DiscoverMedia;
 import com.dani2pix.recipr.ui.dashboard.model.People;
 import com.dani2pix.recipr.ui.dashboard.model.TvShow;
 import com.dani2pix.recipr.ui.dashboard.presenter.PeoplePresenter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -46,6 +50,8 @@ public class PeopleFragment extends DashboardFragment implements DashboardView {
             }
         });
 
+        presenter.explorePeople();
+
         return view;
     }
 
@@ -72,8 +78,10 @@ public class PeopleFragment extends DashboardFragment implements DashboardView {
     }
 
     @Override
-    public void onPopularPeopleReceived(People people) {
-        Toast.makeText(context, "People received.", Toast.LENGTH_SHORT).show();
+    public void onPopularPeopleReceived(DiscoverMedia discoverMedia) {
+        DashboardAdapter adapter = new DashboardAdapter<>(discoverMedia.getResults(), context);
+        list.setAdapter(adapter);
+        list.setLayoutManager(new LinearLayoutManager(context));
         swipeRefreshList.setRefreshing(false);
     }
 

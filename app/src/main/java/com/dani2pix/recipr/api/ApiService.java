@@ -43,5 +43,5 @@ public interface ApiService {
     Observable<DiscoverMedia<TvShow>> exploreTvShows(@Query(ApiConstants.QUERY_API_KEY) String apiKey);
 
     @GET(ApiConstants.EXPLORE_PEOPLE)
-    Observable<People> explorePopularPeople(@Query(ApiConstants.QUERY_API_KEY) String apiKey);
+    Observable<DiscoverMedia<People>> explorePopularPeople(@Query(ApiConstants.QUERY_API_KEY) String apiKey);
 }

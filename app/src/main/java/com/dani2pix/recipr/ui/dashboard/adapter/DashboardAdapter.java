@@ -78,6 +78,10 @@ public class DashboardAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewH
             picasso.load("https://image.tmdb.org/t/p/" + "w300" + show.getPosterPath()).into(holder.poster);
         } else {
             People people = (People) item;
+
+            holder.title.setText(people.getName());
+            holder.metaData.setText(String.valueOf(people.getPopularity()));
+            picasso.load("https://image.tmdb.org/t/p/" + "w300" + people.getProfilePath()).into(holder.poster);
         }
     }
 }
