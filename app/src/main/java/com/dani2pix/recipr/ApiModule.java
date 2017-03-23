@@ -33,6 +33,7 @@ public class ApiModule {
     @Provides
     @Singleton
     Retrofit provideRetrofit() {
+        //dsada
         return new Retrofit.Builder()
                 .baseUrl(ApiConstants.BASE_ENDPOINT)
                 .addConverterFactory(GsonConverterFactory.create())
