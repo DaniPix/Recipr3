@@ -54,7 +54,6 @@ public class DashboardFragment extends Fragment {
                 getResources().getColor(R.color.colorPrimaryDark),
                 getResources().getColor(R.color.colorAccent)
         );
-
         return view;
     }
 }

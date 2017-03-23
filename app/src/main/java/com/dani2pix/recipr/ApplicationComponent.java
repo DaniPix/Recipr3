@@ -10,6 +10,7 @@ import com.dani2pix.recipr.ui.dashboard.view.DashboardFragment;
 import com.dani2pix.recipr.ui.dashboard.view.MoviesFragment;
 import com.dani2pix.recipr.ui.dashboard.view.PeopleFragment;
 import com.dani2pix.recipr.ui.dashboard.view.ShowsFragment;
+import com.dani2pix.recipr.ui.details.view.DetailsScreenFragment;
 import com.dani2pix.recipr.ui.splashscreen.SplashScreen;
 
 import javax.inject.Singleton;
@@ -46,4 +47,6 @@ public interface ApplicationComponent {
     void inject(ShowsFragment target);
 
     void inject(PeopleFragment target);
+
+    void inject(DetailsScreenFragment target);
 }
